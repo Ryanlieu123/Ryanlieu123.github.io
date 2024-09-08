@@ -3,59 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Game</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        #quiz-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        #question {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        #options {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        #options button {
-            margin: 5px;
-            width: 200px;
-        }
-        #result {
-            font-weight: bold;
-            margin-top: 20px;
-        }
-    </style>
+    <title>Personality Quiz</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="quiz-container">
-        <h1>Quiz Game</h1>
+        <h1>Personality Quiz</h1>
         <div id="start-screen">
             <button id="start-btn">Start Quiz</button>
         </div>
@@ -64,105 +17,13 @@
             <div id="options"></div>
         </div>
         <div id="result-screen" style="display: none;">
-            <h2>Quiz Completed!</h2>
-            <p>Your score: <span id="score"></span></p>
-            <p>Points earned: <span id="points"></span></p>
+            <h2>Your Personality Result</h2>
+            <p id="personality-type"></p>
+            <p id="personality-description"></p>
             <button id="restart-btn">Restart Quiz</button>
         </div>
     </div>
-
-    <script>
-        const quizData = [
-            {
-                question: "What is the capital of France?",
-                options: ["London", "Berlin", "Paris", "Madrid"],
-                correctAnswer: 2
-            },
-            {
-                question: "Which planet is known as the Red Planet?",
-                options: ["Mars", "Venus", "Jupiter", "Saturn"],
-                correctAnswer: 0
-            },
-            {
-                question: "What is the largest mammal in the world?",
-                options: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
-                correctAnswer: 1
-            }
-        ];
-
-        let currentQuestion = 0;
-        let score = 0;
-
-        const startScreen = document.getElementById('start-screen');
-        const quizScreen = document.getElementById('quiz-screen');
-        const resultScreen = document.getElementById('result-screen');
-        const questionElement = document.getElementById('question');
-        const optionsElement = document.getElementById('options');
-        const scoreElement = document.getElementById('score');
-        const pointsElement = document.getElementById('points');
-        const startButton = document.getElementById('start-btn');
-        const restartButton = document.getElementById('restart-btn');
-
-        startButton.addEventListener('click', startQuiz);
-        restartButton.addEventListener('click', restartQuiz);
-
-        function startQuiz() {
-            startScreen.style.display = 'none';
-            quizScreen.style.display = 'block';
-            loadQuestion();
-        }
-
-        function loadQuestion() {
-            const question = quizData[currentQuestion];
-            questionElement.textContent = question.question;
-            optionsElement.innerHTML = '';
-
-            for (let i = 0; i < question.options.length; i++) {
-                const button = document.createElement('button');
-                button.textContent = question.options[i];
-                button.addEventListener('click', () => selectAnswer(i));
-                optionsElement.appendChild(button);
-            }
-        }
-
-        function selectAnswer(selectedIndex) {
-            const question = quizData[currentQuestion];
-            if (selectedIndex === question.correctAnswer) {
-                score++;
-            }
-
-            currentQuestion++;
-
-            if (currentQuestion < quizData.length) {
-                loadQuestion();
-            } else {
-                showResult();
-            }
-        }
-
-        function showResult() {
-            quizScreen.style.display = 'none';
-            resultScreen.style.display = 'block';
-            scoreElement.textContent = `${score}/${quizData.length}`;
-            
-            let points = 0;
-            if (score === quizData.length) {
-                points = 100;
-            } else if (score >= quizData.length / 2) {
-                points = 50;
-            } else {
-                points = 25;
-            }
-            
-            pointsElement.textContent = points;
-        }
-
-        function restartQuiz() {
-            currentQuestion = 0;
-            score = 0;
-            resultScreen.style.display = 'none';
-            startQuiz();
-        }
-    </script>
+    <script src="quiz-data.js"></script>
+    <script src="quiz.js"></script>
 </body>
 </html>
