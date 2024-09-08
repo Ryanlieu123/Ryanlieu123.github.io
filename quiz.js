@@ -1,8 +1,8 @@
-let currentQuestion = 0;
-let personalityScores = {};
+console.log('quiz.js is loaded');
 
-// Wait for the DOM to be fully loaded before accessing elements
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM is fully loaded');
+
     const startScreen = document.getElementById('start-screen');
     const quizScreen = document.getElementById('quiz-screen');
     const resultScreen = document.getElementById('result-screen');
@@ -13,72 +13,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.getElementById('start-btn');
     const restartButton = document.getElementById('restart-btn');
 
-    startButton.addEventListener('click', startQuiz);
-    restartButton.addEventListener('click', restartQuiz);
+    console.log('Elements retrieved:', { startScreen, quizScreen, resultScreen, questionElement, optionsElement, personalityTypeElement, personalityDescriptionElement, startButton, restartButton });
+
+    if (startButton) {
+        startButton.addEventListener('click', startQuiz);
+        console.log('Start button event listener added');
+    } else {
+        console.error('Start button not found');
+    }
+
+    if (restartButton) {
+        restartButton.addEventListener('click', restartQuiz);
+        console.log('Restart button event listener added');
+    } else {
+        console.error('Restart button not found');
+    }
 
     function startQuiz() {
+        console.log('startQuiz function called');
         startScreen.style.display = 'none';
         quizScreen.style.display = 'block';
         personalityScores = {};
         loadQuestion();
     }
 
-    function loadQuestion() {
-        const question = quizData[currentQuestion];
-        questionElement.textContent = question.question;
-        optionsElement.innerHTML = '';
+    // ... rest of your code ...
 
-        for (let i = 0; i < question.options.length; i++) {
-            const button = document.createElement('button');
-            button.textContent = question.options[i].text;
-            button.addEventListener('click', () => selectAnswer(i));
-            optionsElement.appendChild(button);
-        }
-    }
-
-    function selectAnswer(selectedIndex) {
-        const question = quizData[currentQuestion];
-        const selectedOption = question.options[selectedIndex];
-        
-        for (const [personality, score] of Object.entries(selectedOption.scores)) {
-            personalityScores[personality] = (personalityScores[personality] || 0) + score;
-        }
-
-        currentQuestion++;
-
-        if (currentQuestion < quizData.length) {
-            loadQuestion();
-        } else {
-            showResult();
-        }
-    }
-
-    function showResult() {
-        quizScreen.style.display = 'none';
-        resultScreen.style.display = 'block';
-        
-        const personalityResult = calculatePersonalityResult();
-        personalityTypeElement.textContent = personalityResult.type;
-        personalityDescriptionElement.textContent = personalityResult.description;
-    }
-
-    function calculatePersonalityResult() {
-        let maxScore = 0;
-        let personalityType = '';
-
-        for (const [personality, score] of Object.entries(personalityScores)) {
-            if (score > maxScore) {
-                maxScore = score;
-                personalityType = personality;
-            }
-        }
-
-        return personalityTypes[personalityType];
-    }
-
-    function restartQuiz() {
-        currentQuestion = 0;
-        resultScreen.style.display = 'none';
-        startQuiz();
-    }
+    console.log('quiz.js finished loading');
 });
+
+// Add this at the end of the file
+console.log('quiz-data.js content:', quizData, personalityTypes);
