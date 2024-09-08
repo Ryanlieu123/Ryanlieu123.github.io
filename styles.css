@@ -64,11 +64,14 @@ button {
     line-height: 1.5;
 }
 
+/* Centering the images */
 #question-image, #result-image {
-    max-width: 90%; /* Set max width to 90% of the container */
-    width: auto;    /* Allow width to adjust automatically */
+    max-width: 90%; /* Adjusted to 90% for better fit */
+    width: auto;    /* Automatically adjust width */
+    max-height: 300px; /* Set a maximum height */
     height: auto;   /* Maintain aspect ratio */
-    margin: 10px 0; /* Add some margin for spacing */
+    margin: 10px auto; /* Center the image horizontally with auto margins */
+    display: block; /* Ensure the image is treated as a block element */
     border-radius: 5px; /* Keep rounded corners */
 }
 
