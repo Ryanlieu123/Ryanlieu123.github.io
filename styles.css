@@ -3,9 +3,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 #quiz-container {
@@ -14,22 +16,25 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
-    max-width: 600px;
+    max-width: 100%;
     width: 100%;
+    box-sizing: border-box;
 }
 
 button {
     background-color: #4CAF50;
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 10px 0;
     cursor: pointer;
     border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
 }
 
 #question {
@@ -44,8 +49,8 @@ button {
 }
 
 #options button {
-    margin: 5px;
-    width: 80%;
+    margin: 5px 0;
+    width: 100%;
 }
 
 #personality-type {
@@ -57,4 +62,39 @@ button {
 #personality-description {
     font-size: 16px;
     line-height: 1.5;
+}
+
+#question-image, #result-image {
+    max-width: 90%; /* Set max width to 90% of the container */
+    width: auto;    /* Allow width to adjust automatically */
+    height: auto;   /* Maintain aspect ratio */
+    margin: 10px 0; /* Add some margin for spacing */
+    border-radius: 5px; /* Keep rounded corners */
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    #quiz-container {
+        padding: 15px;
+    }
+
+    #question {
+        font-size: 16px;
+    }
+
+    button {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    #personality-type {
+        font-size: 20px;
+    }
+
+    #personality-description {
+        font-size: 14px;
+    }
 }

@@ -10,6 +10,8 @@ const personalityTypeElement = document.getElementById('personality-type');
 const personalityDescriptionElement = document.getElementById('personality-description');
 const startButton = document.getElementById('start-btn');
 const restartButton = document.getElementById('restart-btn');
+const questionImage = document.getElementById('question-image');
+const resultImage = document.getElementById('result-image');
 
 startButton.addEventListener('click', startQuiz);
 restartButton.addEventListener('click', restartQuiz);
@@ -25,6 +27,14 @@ function loadQuestion() {
     const question = quizData[currentQuestion];
     questionElement.textContent = question.question;
     optionsElement.innerHTML = '';
+
+    // Handle question image
+    if (question.image) {
+        questionImage.src = question.image;
+        questionImage.style.display = 'block';
+    } else {
+        questionImage.style.display = 'none';
+    }
 
     for (let i = 0; i < question.options.length; i++) {
         const button = document.createElement('button');
@@ -58,6 +68,14 @@ function showResult() {
     const personalityResult = calculatePersonalityResult();
     personalityTypeElement.textContent = personalityResult.type;
     personalityDescriptionElement.textContent = personalityResult.description;
+
+    // Handle result image
+    if (personalityResult.image) {
+        resultImage.src = personalityResult.image;
+        resultImage.style.display = 'block';
+    } else {
+        resultImage.style.display = 'none';
+    }
 }
 
 function calculatePersonalityResult() {
