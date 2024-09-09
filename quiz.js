@@ -1,18 +1,23 @@
-// Use let for variables that will be modified
 let currentQuestion = 0;
 let personalityScores = {};
 
-// Use DOMContentLoaded to ensure the DOM is fully loaded before initializing the quiz
-document.addEventListener('DOMContentLoaded', () => {
-    initializeQuiz();
-});
+document.addEventListener('DOMContentLoaded', initializeQuiz);
 
 function initializeQuiz() {
-    const startButton = document.getElementById('start-btn');
-    const restartButton = document.getElementById('restart-btn');
+    const startQuizBtn = document.getElementById('start-quiz-btn');
+    const startOverBtn = document.getElementById('restart-btn');
 
-    if (startButton) startButton.addEventListener('click', startQuiz);
-    if (restartButton) restartButton.addEventListener('click', restartQuiz);
+    if (startQuizBtn) {
+        startQuizBtn.addEventListener('click', startQuiz);
+    } else {
+        console.error("Start Quiz button not found");
+    }
+
+    if (startOverBtn) {
+        startOverBtn.addEventListener('click', startOver);
+    } else {
+        console.error("Start Over button not found");
+    }
 }
 
 function startQuiz() {
@@ -39,7 +44,6 @@ function loadQuestion() {
     if (questionElement) questionElement.textContent = question.question;
     if (optionsElement) optionsElement.innerHTML = '';
 
-    // Handle question image
     if (questionImage) {
         if (question.image) {
             questionImage.src = question.image;
@@ -49,12 +53,12 @@ function loadQuestion() {
         }
     }
 
-    for (let i = 0; i < question.options.length; i++) {
+    question.options.forEach((option, index) => {
         const button = document.createElement('button');
-        button.textContent = question.options[i].text;
-        button.addEventListener('click', () => selectAnswer(i));
-        optionsElement?.appendChild(button);
-    }
+        button.textContent = option.text;
+        button.addEventListener('click', () => selectAnswer(index));
+        optionsElement.appendChild(button);
+    });
 }
 
 function selectAnswer(selectedIndex) {
@@ -70,19 +74,29 @@ function selectAnswer(selectedIndex) {
 }
 
 function showResult() {
-    const quizScreen = document.getElementById('quiz-screen');
+    const quizContainer = document.getElementById('quiz-container');
     const resultScreen = document.getElementById('result-screen');
-    const restartButton = document.getElementById('restart-btn');
     const personalityTypeElement = document.getElementById('personality-type');
     const personalityDescriptionElement = document.getElementById('personality-description');
+    const resultImage = document.getElementById('result-image');
+    const startOverBtn = document.getElementById('restart-btn');
 
-    if (quizScreen) quizScreen.style.display = 'none';
+    if (quizContainer) quizContainer.style.display = 'none';
     if (resultScreen) resultScreen.style.display = 'block';
-    if (restartButton) restartButton.style.display = 'block';
+    if (startOverBtn) startOverBtn.style.display = 'block';
     
     const personalityResult = calculatePersonalityResult();
     if (personalityTypeElement) personalityTypeElement.textContent = personalityResult.type;
     if (personalityDescriptionElement) personalityDescriptionElement.textContent = personalityResult.description;
+    
+    if (resultImage) {
+        if (personalityResult.image) {
+            resultImage.src = personalityResult.image;
+            resultImage.style.display = 'block';
+        } else {
+            resultImage.style.display = 'none';
+        }
+    }
 }
 
 function calculatePersonalityResult() {
@@ -96,11 +110,20 @@ function calculatePersonalityResult() {
         }
     }
 
-    return personalityTypes[personalityType];
+    return personalityTypes[personalityType] || { type: 'Unknown', description: 'No matching personality found.' };
 }
 
-function restartQuiz() {
+function startOver() {
+    const choiceScreen = document.getElementById('choice-screen');
+    const quizContainer = document.getElementById('quiz-container');
     const resultScreen = document.getElementById('result-screen');
+    const startOverBtn = document.getElementById('restart-btn');
+
+    if (choiceScreen) choiceScreen.style.display = 'block';
+    if (quizContainer) quizContainer.style.display = 'none';
     if (resultScreen) resultScreen.style.display = 'none';
-    startQuiz();
+    if (startOverBtn) startOverBtn.style.display = 'none';
+
+    currentQuestion = 0;
+    personalityScores = {};
 }
