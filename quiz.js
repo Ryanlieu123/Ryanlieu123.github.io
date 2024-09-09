@@ -1,67 +1,49 @@
+console.log("quiz.js loaded");
+
 let currentQuestion = 0;
 let personalityScores = {};
 
-document.addEventListener('DOMContentLoaded', initializeQuiz);
-
-function initializeQuiz() {
-    const startQuizBtn = document.getElementById('start-quiz-btn');
-    const startOverBtn = document.getElementById('restart-btn');
-
-    if (startQuizBtn) {
-        startQuizBtn.addEventListener('click', startQuiz);
-    } else {
-        console.error("Start Quiz button not found");
-    }
-
-    if (startOverBtn) {
-        startOverBtn.addEventListener('click', startOver);
-    } else {
-        console.error("Start Over button not found");
-    }
-}
-
 function startQuiz() {
-    const choiceScreen = document.getElementById('choice-screen');
-    const quizContainer = document.getElementById('quiz-container');
-    if (choiceScreen) choiceScreen.style.display = 'none';
-    if (quizContainer) quizContainer.style.display = 'block';
+    console.log("Starting quiz");
+    document.getElementById('choice-screen').style.display = 'none';
+    document.getElementById('quiz-container').style.display = 'block';
+    document.getElementById('result-screen').style.display = 'none';
     currentQuestion = 0;
     personalityScores = {};
     loadQuestion();
 }
 
 function loadQuestion() {
+    console.log("Loading question", currentQuestion);
     if (currentQuestion >= quizData.length) {
+        console.log("All questions answered, showing result");
         showResult();
         return;
     }
 
     const question = quizData[currentQuestion];
-    const questionElement = document.getElementById('question');
+    document.getElementById('question').textContent = question.question;
+    
     const optionsElement = document.getElementById('options');
-    const questionImage = document.getElementById('question-image');
-
-    if (questionElement) questionElement.textContent = question.question;
-    if (optionsElement) optionsElement.innerHTML = '';
-
-    if (questionImage) {
-        if (question.image) {
-            questionImage.src = question.image;
-            questionImage.style.display = 'block';
-        } else {
-            questionImage.style.display = 'none';
-        }
-    }
-
+    optionsElement.innerHTML = '';
     question.options.forEach((option, index) => {
         const button = document.createElement('button');
         button.textContent = option.text;
         button.addEventListener('click', () => selectAnswer(index));
         optionsElement.appendChild(button);
     });
+
+    const questionImage = document.getElementById('question-image');
+    if (question.image) {
+        questionImage.src = question.image;
+        questionImage.style.display = 'block';
+    } else {
+        questionImage.style.display = 'none';
+    }
 }
 
 function selectAnswer(selectedIndex) {
+    console.log("Answer selected", selectedIndex);
     const question = quizData[currentQuestion];
     const selectedOption = question.options[selectedIndex];
     
@@ -74,29 +56,25 @@ function selectAnswer(selectedIndex) {
 }
 
 function showResult() {
-    const quizContainer = document.getElementById('quiz-container');
-    const resultScreen = document.getElementById('result-screen');
-    const personalityTypeElement = document.getElementById('personality-type');
-    const personalityDescriptionElement = document.getElementById('personality-description');
-    const resultImage = document.getElementById('result-image');
-    const startOverBtn = document.getElementById('restart-btn');
+    console.log("Showing result");
+    document.getElementById('quiz-container').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'block';
+    document.getElementById('restart-btn').style.display = 'block';
 
-    if (quizContainer) quizContainer.style.display = 'none';
-    if (resultScreen) resultScreen.style.display = 'block';
-    if (startOverBtn) startOverBtn.style.display = 'block';
-    
-    const personalityResult = calculatePersonalityResult();
-    if (personalityTypeElement) personalityTypeElement.textContent = personalityResult.type;
-    if (personalityDescriptionElement) personalityDescriptionElement.textContent = personalityResult.description;
-    
-    if (resultImage) {
-        if (personalityResult.image) {
-            resultImage.src = personalityResult.image;
-            resultImage.style.display = 'block';
-        } else {
-            resultImage.style.display = 'none';
-        }
+    const result = calculatePersonalityResult();
+    document.getElementById('personality-type').textContent = result.type;
+    document.getElementById('personality-description').textContent = result.description;
+
+    const resultImage = document.getElementById('result-image');
+    if (result.image) {
+        resultImage.src = result.image;
+        resultImage.style.display = 'block';
+    } else {
+        resultImage.style.display = 'none';
     }
+
+    console.log("Quiz container display:", document.getElementById('quiz-container').style.display);
+    console.log("Result screen display:", document.getElementById('result-screen').style.display);
 }
 
 function calculatePersonalityResult() {
@@ -113,17 +91,15 @@ function calculatePersonalityResult() {
     return personalityTypes[personalityType] || { type: 'Unknown', description: 'No matching personality found.' };
 }
 
-function startOver() {
-    const choiceScreen = document.getElementById('choice-screen');
-    const quizContainer = document.getElementById('quiz-container');
-    const resultScreen = document.getElementById('result-screen');
-    const startOverBtn = document.getElementById('restart-btn');
-
-    if (choiceScreen) choiceScreen.style.display = 'block';
-    if (quizContainer) quizContainer.style.display = 'none';
-    if (resultScreen) resultScreen.style.display = 'none';
-    if (startOverBtn) startOverBtn.style.display = 'none';
-
+function restartQuiz() {
+    console.log("Restarting quiz");
     currentQuestion = 0;
     personalityScores = {};
+    startQuiz();
 }
+
+// Make sure to call this function when the restart button is clicked
+document.getElementById('restart-btn').addEventListener('click', restartQuiz);
+
+// Export the startQuiz function so it can be called from other scripts
+window.startQuiz = startQuiz;
