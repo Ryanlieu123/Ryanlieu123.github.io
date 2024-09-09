@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personality Quiz</title>
+    <title>Quiz and Adventure Game</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <div id="quiz-container">
-        <h1>Personality Quiz</h1>
-        <div id="start-screen">
-            <button id="start-btn">Start Quiz</button>
+    <div id="main-container">
+        <div id="choice-screen">
+            <h1>Choose Your Experience</h1>
+            <button id="start-quiz-btn">Start Personality Quiz</button>
+            <button id="start-adventure-btn">Start Adventure</button>
         </div>
-        <div id="quiz-screen" style="display: none;">
+
+        <div id="quiz-container" style="display: none;">
             <div id="question"></div>
             <img id="question-image" src="" alt="Question Image" style="display: none;">
             <div id="options"></div>
@@ -22,10 +24,28 @@
             <p id="personality-type"></p>
             <img id="result-image" src="" alt="Result Image" style="display: none;">
             <p id="personality-description"></p>
-            <button id="restart-btn">Restart Quiz</button>
+            <button id="restart-quiz-btn">Restart Quiz</button>
         </div>
+
+        <div id="adventure-container" style="display: none;">
+            <h2>Adventure Game</h2>
+            <div id="adventure-screen">
+                <p id="adventure-scenario"></p>
+                <div id="adventure-options"></div>
+            </div>
+            <div id="adventure-result-screen" style="display: none;">
+                <h3>Your Adventure Outcome</h3>
+                <p id="adventure-outcome"></p>
+            </div>
+        </div>
+
+        <button id="restart-btn" style="display: none;">Start Over</button>
     </div>
-    <script src="./quiz-data.js"></script>
-    <script src="./quiz.js"></script>
+
+    <script src="quiz-data.js"></script>
+    <script src="quiz.js"></script>
+    <script src="adventure-data.js"></script>
+    <script src="adventure.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
