@@ -10,7 +10,7 @@ body {
     box-sizing: border-box;
 }
 
-#quiz-container {
+#main-container {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -19,6 +19,25 @@ body {
     max-width: 100%;
     width: 100%;
     box-sizing: border-box;
+}
+
+
+#restart-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s;
+    display: block; /* Change this from inline-block to block */
+    margin: 20px auto; /* This will center the button */
+    width: fit-content; /* This will make the button only as wide as its content */
+}
+
+#restart-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
 }
 
 button {
