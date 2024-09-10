@@ -1,12 +1,24 @@
-let currentScenario = 'start';
-
 function startAdventure() {
-    const choiceScreen = document.getElementById('choice-screen');
-    const adventureContainer = document.getElementById('adventure-container');
+    document.getElementById('choice-screen').style.display = 'none';
+    document.getElementById('adventure-container').style.display = 'block';
+    showAdventureStory();
+}
+
+function showAdventureStory() {
+    const storyScreen = document.getElementById('adventure-story-screen');
+    const storyText = document.getElementById('adventure-story-text');
     
-    if (choiceScreen) choiceScreen.style.display = 'none';
-    if (adventureContainer) adventureContainer.style.display = 'block';
-    
+    storyScreen.style.display = 'block';
+    document.getElementById('adventure-screen').style.display = 'none';
+    storyText.textContent = adventureData['storyIntro']
+
+    document.getElementById('start-adventure-game-btn').addEventListener('click', startAdventureGame);
+}
+
+function startAdventureGame() {
+    document.getElementById('adventure-story-screen').style.display = 'none';
+    document.getElementById('adventure-container').style.display = 'block';
+    currentScenario = 'start';
     loadScenario(currentScenario);
 }
 
@@ -15,6 +27,8 @@ function loadScenario(scenarioId) {
         console.error('Scenario not found:', scenarioId);
         return;
     }
+
+    document.getElementById('adventure-screen').style.display = 'block';
 
     const scenario = adventureData[scenarioId];
     const scenarioElement = document.getElementById('adventure-scenario');

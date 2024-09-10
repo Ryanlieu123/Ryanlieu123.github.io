@@ -22,7 +22,7 @@ function loadQuestion() {
     }
 
     const question = quizData[currentQuestion];
-    document.getElementById('question').textContent = question.question;
+    document.getElementById('question').innerHTML = question.question;
     
     const optionsElement = document.getElementById('options');
     optionsElement.innerHTML = '';

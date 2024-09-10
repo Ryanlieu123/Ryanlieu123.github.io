@@ -1,4 +1,5 @@
 const adventureData = {
+    'storyIntro': "You've always",
     'start': {
         text: "You find yourself at a crossroad in a dense forest. Do you go left or right?",
         options: [
