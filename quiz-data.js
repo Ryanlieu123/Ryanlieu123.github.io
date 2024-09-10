@@ -39,7 +39,7 @@ const quizData = [
         ]
     },
     {
-        question: "<strong>Part 3: The Clearing<strong><br>After walking for some time, you come across a clearing in the middle of the forest. In the center stands an ancient, moss-covered statue of the Bobs god. The air feels different here—thicker, charged with energy.",
+        question: "<strong>Part 3: The Clearing</strong><br>After walking for some time, you come across a clearing in the middle of the forest. In the center stands an ancient, moss-covered statue of the Bobs god. The air feels different here—thicker, charged with energy.",
         image: "images/Q1.jpg",
         options: [
             { text: "You step forward and place your hand on the statue, calling out to the Bobs god", scores: { introvert: 0, extrovert: 2, analytical: 0, creative: 1 } },
@@ -55,7 +55,7 @@ const quizData = [
         ]
     },
     {
-        question: "Once the rubble has settled you realise that the human turned out to be your partner Bobs.",
+        question: "<strong>Part 4: The Ending</strong><br>Once the rubble has settled you realise that the human turned out to be your partner Bobs.",
         image: "images/Q1.jpg",
         options: [
             { text: "You run up to Bobs happy to see them", scores: { introvert: 1, extrovert: 0, analytical: 2, creative: 0 } },
