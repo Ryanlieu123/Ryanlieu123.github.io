@@ -7,11 +7,19 @@ function startAdventure() {
 function showAdventureStory() {
     const storyScreen = document.getElementById('adventure-story-screen');
     const storyText = document.getElementById('adventure-story-text');
-    
+    const storyImage = document.getElementById('story-image');
+
     storyScreen.style.display = 'block';
     document.getElementById('adventure-screen').style.display = 'none';
     storyText.textContent = adventureData['storyIntro']
 
+    if (adventureData.storyIntro.image) {
+        storyImage.src = adventureData.storyIntro.image;
+        storyImage.style.display = 'block';
+    } else {
+        storyImage.style.display = 'none';
+    }
+    
     document.getElementById('start-adventure-game-btn').addEventListener('click', startAdventureGame);
 }
 
@@ -37,7 +45,15 @@ function loadScenario(scenarioId) {
     if (scenarioElement) scenarioElement.innerHTML = scenario.text;
     if (optionsContainer) {
         optionsContainer.innerHTML = '';
-        
+    
+    const scenarioImage = document.getElementById('scenario-image');
+    if (scenario.image) {
+        scenarioImage.src = scenario.image;
+        scenarioImage.style.display = 'block';
+    } else {
+        scenarioImage.style.display = 'none';
+    }
+
         scenario.options.forEach(option => {
             const button = document.createElement('button');
             button.textContent = option.text;

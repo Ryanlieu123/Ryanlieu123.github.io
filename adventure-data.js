@@ -35,6 +35,7 @@ const adventureData = {
 
     pathOfShadows: {
         text: "<strong>Part 3: The Final Challenge</strong><br>This is the last decision you'll make before reaching your treasure—or your doom.<br>Which path do you choose?",
+        image: "images/pathOfShadows.png",
         options: [
             { text: "The Path of Roots: Gnarled tree roots weave across this path, making it treacherous, but something glimmers at the end.", next: "shadowsRoots" },
             { text: "The Path of Fog: A thick fog blankets this trail, making it nearly impossible to see more than a few feet ahead. You hear bouncing in the distance", next: "shadowsFog" }

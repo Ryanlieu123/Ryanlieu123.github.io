@@ -113,7 +113,7 @@ button {
 }
 
 /* Centering the images */
-#question-image, #result-image {
+#question-image, #result-image, #story-image, #scenario-image {
     max-width: 90%; /* Adjusted to 90% for better fit */
     width: auto;    /* Automatically adjust width */
     max-height: 300px; /* Set a maximum height */
