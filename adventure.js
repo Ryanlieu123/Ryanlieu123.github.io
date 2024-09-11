@@ -34,7 +34,7 @@ function loadScenario(scenarioId) {
     const scenarioElement = document.getElementById('adventure-scenario');
     const optionsContainer = document.getElementById('adventure-options');
     
-    if (scenarioElement) scenarioElement.textContent = scenario.text;
+    if (scenarioElement) scenarioElement.innerHTML = scenario.text;
     if (optionsContainer) {
         optionsContainer.innerHTML = '';
         
@@ -74,7 +74,7 @@ function showAdventureEnding(endingId) {
     
     if (adventureScreen) adventureScreen.style.display = 'none';
     if (adventureResultScreen) adventureResultScreen.style.display = 'block';
-    if (adventureOutcome) adventureOutcome.textContent = ending.text;
+    if (adventureOutcome) adventureOutcome.innerHTML = ending.text;
     if (restartBtn) restartBtn.style.display = 'block';
 }
 
