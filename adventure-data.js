@@ -6,7 +6,7 @@ const adventureData = {
 
     start: {
         text: "<strong>Part 1: The path to treasure</strong><br>As you enter the forest, the path quickly splits into two. One trail seems well-worn, with large trees lining the way like silent guardians. The other is less traveled, with twisted vines creeping along the ground, almost as if nature itself is trying to conceal what lies ahead.<br>Which path do you choose?",
-        image: "images/pathOfShadows.png",
+        image: "images/start.png",
         options: [
             { text: "The Well-Worn Path: A familiar road, often walked by those before you, offering a sense of security.", next: "wellWornPath" },
             { text: "The Twisted Path: Mysterious and wild, this path calls to those who seek the unknown, willing to face whatever dangers it may hold.", next: "twistedPath" }
@@ -15,7 +15,7 @@ const adventureData = {
 
     wellWornPath: {
         text: "<strong>Part 2: Twilight hours</strong><br>The path forward is paved out but you cannot help but feel uneasy. Each new step seems to lead you to towards a dead end. The road splits in 2.<br>Which path do you choose?",
-        image: "images/pathOfShadows.png",
+        image: "images/wellWornPath.png",
         options: [
             { text: "The Path of Sunlight: A clear path where beams of sunlight break through the canopy, illuminating the way ahead with golden light.", next: "pathOfSunlight" },
             { text: "The Path of Shadows: A dark, narrow trail that twists and turns, shrouded in thick foliage, where only faint whispers can be heard.", next: "pathOfShadows" }
@@ -24,7 +24,7 @@ const adventureData = {
 
     twistedPath: {
         text: "<strong>Part 2: The Second Fork</strong><br>The trees are thicker here, and the air feels heavier, as if the forest is watching your every move. Each new direction seems to hold both promise and risk.<br>Which path do you choose?",
-        image: "images/pathOfShadows.png",
+        image: "images/twistedPath.png",
         options: [
             { text: "The Path of Echoes: This path feels alive with sound—the forest echoes your footsteps, and distant noises keep you on edge.", next: "pathOfEchoes" },
             { text: "The Path of Silence: An unnerving quiet blankets this trail, as if the forest itself is holding its breath, waiting for something to happen.", next: "pathOfSilence" }
@@ -33,7 +33,7 @@ const adventureData = {
 
     pathOfSunlight: {
         text: "<strong>Part 3: The Final Challenge</strong><br>This is the last decision you'll make before reaching your treasure—or your doom.<br>Which path do you choose?",
-        image: "images/pathOfShadows.png",
+        image: "images/pathOfSunlight.png",
         options: [
             { text: "The Path of Flowers: This path is lined with vibrant flowers, their colors so bright they seem to glow.", next: "sunlightFlowers" },
             { text: "The Path of Stones: A rocky trail, uneven underfoot, but the stones seem to shimmer faintly, as if containing some hidden power.", next: "sunlightStones" }

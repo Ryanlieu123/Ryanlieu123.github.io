@@ -92,6 +92,14 @@ function showAdventureEnding(endingId) {
     if (adventureResultScreen) adventureResultScreen.style.display = 'block';
     if (adventureOutcome) adventureOutcome.innerHTML = ending.text;
     if (restartBtn) restartBtn.style.display = 'block';
+
+    const adventureImage = document.getElementById('ending-image');
+    if (ending.image) {
+        adventureImage.src = ending.image;
+        adventureImage.style.display = 'block';
+    } else {
+        adventureImage.style.display = 'none';
+    }
 }
 
 function restartAdventure() {
