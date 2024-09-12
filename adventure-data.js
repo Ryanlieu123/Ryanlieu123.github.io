@@ -1,7 +1,7 @@
 const adventureData = {
     storyIntro: {
         text: "Legend has it that the Forest of Treasures hides riches beyond imagination, but it also guards deadly traps for those who are unworthy or too greedy. One quiet morning, you decide to set out on a quest to uncover the mysteries of this forest. As you approach its edge, the sunlight filters through the towering trees, casting dancing shadows along the mossy ground. You feel the pull of adventure deep in your bones.",
-        image: "images/pathOfShadows.png",
+        image: "images/storyIntro.png",
     },
 
     start: {
