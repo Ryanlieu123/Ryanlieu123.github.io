@@ -1,6 +1,8 @@
 const adventureData = {
-    storyIntro: "Legend has it that the Forest of Treasures hides riches beyond imagination, but it also guards deadly traps for those who are unworthy or too greedy. One quiet morning, you decide to set out on a quest to uncover the mysteries of this forest. As you approach its edge, the sunlight filters through the towering trees, casting dancing shadows along the mossy ground. You feel the pull of adventure deep in your bones.",
-    image: "images/pathOfShadows.png",
+    storyIntro: {
+        text: "Legend has it that the Forest of Treasures hides riches beyond imagination, but it also guards deadly traps for those who are unworthy or too greedy. One quiet morning, you decide to set out on a quest to uncover the mysteries of this forest. As you approach its edge, the sunlight filters through the towering trees, casting dancing shadows along the mossy ground. You feel the pull of adventure deep in your bones.",
+        image: "images/pathOfShadows.png",
+    },
 
     start: {
         text: "<strong>Part 1: The path to treasure</strong><br>As you enter the forest, the path quickly splits into two. One trail seems well-worn, with large trees lining the way like silent guardians. The other is less traveled, with twisted vines creeping along the ground, almost as if nature itself is trying to conceal what lies ahead.<br>Which path do you choose?",

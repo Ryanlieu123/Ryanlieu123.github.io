@@ -11,7 +11,7 @@ function showAdventureStory() {
 
     storyScreen.style.display = 'block';
     document.getElementById('adventure-screen').style.display = 'none';
-    storyText.textContent = adventureData['storyIntro']
+    storyText.textContent = adventureData.storyIntro.text
 
     if (adventureData.storyIntro.image) {
         storyImage.src = adventureData.storyIntro.image;
@@ -19,7 +19,7 @@ function showAdventureStory() {
     } else {
         storyImage.style.display = 'none';
     }
-    
+
     document.getElementById('start-adventure-game-btn').addEventListener('click', startAdventureGame);
 }
 
