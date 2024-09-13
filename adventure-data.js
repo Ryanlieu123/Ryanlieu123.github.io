@@ -51,7 +51,7 @@ const adventureData = {
 
     pathOfEchoes: {
         text: "<strong>Part 3: The Final Challenge</strong><br>This is the last decision you'll make before reaching your treasure—or your doom.<br>Which path do you choose?",
-        image: "images/pathOfShadows.png",
+        image: "images/pathOfEchoes.png",
         options: [
             { text: "The Path of Crystals: Glittering crystals jut out from the earth, reflecting light in mesmerizing patterns. The air hums with energy.", next: "echoesCrystals" },
             { text: "The Path of Winds: The wind howls through the trees here, tugging at your clothes as if trying to pull you toward the unknown.", next: "echoesWinds" }
@@ -60,7 +60,7 @@ const adventureData = {
 
     pathOfSilence: {
         text: "<strong>Part 3: The Final Challenge</strong><br>This is the last decision you'll make before reaching your treasure—or your doom.<br>Which path do you choose?",
-        image: "images/pathOfShadows.png",
+        image: "images/pathOfSilence.png",
         options: [
             { text: "The Path of Gold: A narrow trail littered with golden leaves that crunch beneath your feet. The scent of something sweet lingers in the air.", next: "silenceGold" },
             { text: "The Path of Darkness: No light penetrates this path. It's pitch black, and every step feels like a leap into the abyss.", next: "silenceDarkness" }
@@ -69,50 +69,50 @@ const adventureData = {
 
     // Endings
     sunlightFlowers: {
-        text: "You find a beautiful meadow with a chest full of sparkling flowers. The treasure is yours, and you leave the forest richer than you ever dreamed.<br><br><strong>Collect your prize!</strong>",
-        image: "images/pathOfShadows.png",
+        text: "You find a beautiful meadow full of sparkling flowers. The treasure is yours, and you leave the forest richer than you ever dreamed.<br><br><strong>Collect your prize!</strong>",
+        image: "images/sunlightFlowers.png",
         type: "ending"
     },
 
     sunlightStones: {
         text: "You uncover a cave where the stones glow in the dark. Unfortunately someone has been here before and emptied out the cave.",
-        image: "images/pathOfShadows.png",
+        image: "images/sunlightStones.png",
         type: "ending"
     },
 
     shadowsRoots: {
         text: "You trip over the roots, falling into a hidden pit. At the bottom, you find a pile of bones and realize you've stumbled into a trap. No treasure here.",
-        image: "images/pathOfShadows.png",
+        image: "images/shadowsRoots.png",
         type: "ending"
     },
 
     shadowsFog: {
         text: "The fog leads you to a clearing where a large stone statue holds a golden ball. The moment you touch it, the fog lifts, and you've earned the forest's second best treasure.<br><br><strong>Collect your prize!</strong>",
-        image: "images/pathOfShadows.png",
+        image: "images/shadowsFog.png",
         type: "ending"
     },
 
     echoesCrystals: {
         text: "You reach a cave full of shimmering crystals. Among them, you find a flawless diamond, you've earned the forest's best treasure.<br><br><strong>Collect your prize!</strong>",
-        image: "images/pathOfShadows.png",
+        image: "images/echoesCrystals.png",
         type: "ending"
     },
 
     echoesWinds: {
         text: "The wind guides you to an ancient temple hidden deep in the woods. The temple has long been abandoned and nothing remains.",
-        image: "images/pathOfShadows.png",
+        image: "images/echoesWinds.png",
         type: "ending"
     },
 
     silenceGold: {
         text: "The golden leaves lead you to a hidden grove, where you find a golden chest. Inside a note has been left behind from long ago.<br><br><strong>Collect your note!</strong>",
-        image: "images/pathOfShadows.png",
+        image: "images/silenceGold.png",
         type: "ending"
     },
 
     silenceDarkness: {
         text: "The darkness consumes you as you stumble forward blindly. There is no treasure here—only endless night.",
-        image: "images/pathOfShadows.png",
+        image: "images/silenceDarkness.png",
         type: "ending"
     }
 };
